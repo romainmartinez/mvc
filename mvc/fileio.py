@@ -28,7 +28,16 @@ class ImportMat:
         print("project '{}' loaded ({} participants)".format(name, nparticipant))
         return mat, nparticipant
 
-    
+    def mat2txt(data):
+
+        with open('test.txt', 'wb') as outfile:
+            shape = '# Array shape: {0}\n'.format(data.shape)
+            outfile.write(bytes(shape, 'utf-8'))
+            for data_slice in data:
+                np.savetxt(outfile, data_slice, fmt='%-7.2f')
+                outfile.write(b'# New slice\n')
+
+
 if __name__ == '__main__':
     path2data = '/media/romain/E/Projet_MVC/data/Final_output'
     dummy = ImportMat(path2data)
