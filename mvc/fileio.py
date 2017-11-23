@@ -4,25 +4,23 @@ import scipy.io as sio
 
 
 class ImportMat:
-    def __init__(self, data_path, data_format, export='mat'):
+    def __init__(self, data_path, data_format, export='mat', normalize=True):
         if not os.path.isdir(data_path):
             raise ValueError('please provide a valid data path')
-        self.FIELDS = ('datasets', 'participants', 'muscles', 'tests', 'relative_mvc')
+        self.FIELDS = ('datasets', 'participants', 'muscles', 'tests', 'mvc')
         self.export = export
         self.data_path = data_path
         self.data_format = data_format
         self.datasets = []
-        self.data, self.n = self._load_data()
+        self.normalize = normalize
+        self.data = self._load_data()
 
     def _load_data(self):
         mat = {}
-        count = 0
         print(f'data format: {self.data_format}')
         for ifile in os.listdir(self.data_path):
             if ifile.endswith(f'{self.data_format}.mat'):
                 mat, n = self._import_mat_file(ifile, mat)
-                count += n
-        print('\ttotal participants: {}'.format(count))
         print(f'\tsample shape: {list(mat.values())[0].shape}')
 
         if self.export == 'mat':
@@ -34,7 +32,7 @@ class ImportMat:
         else:
             raise ValueError('please provide a valid export format (mat, dict or array)')
 
-        return output, count
+        return output
 
     def _import_mat_file(self, ifile, mat):
         name = ifile.replace('MVE_Data_', '').replace('.mat', '')
@@ -47,19 +45,26 @@ class ImportMat:
 
     def _to_dict(self, mat):
         lists = {key: [] for key in self.FIELDS}
+        count = -1
         for idataset, dataset_name in enumerate(list(mat.keys())):
             for iparticipant in range(mat[dataset_name].shape[0]):
+                count += 1
                 for imuscle in range(mat[dataset_name].shape[1]):
                     max_mvc = np.nanmax(mat[dataset_name][iparticipant, imuscle, :])
                     for itest in range(mat[dataset_name].shape[2]):
-                        lists['participants'].append(iparticipant)
+                        lists['participants'].append(count)
                         lists['datasets'].append(idataset)
                         lists['muscles'].append(imuscle)
                         lists['tests'].append(itest)
-                        # normalize mvc (relative to max)
-                        lists['relative_mvc'].append(
-                            mat[dataset_name][iparticipant, imuscle, itest] * 100 / max_mvc
-                        )
+                        if self.normalize:
+                            # normalize mvc (relative to max)
+                            lists['mvc'].append(
+                                mat[dataset_name][iparticipant, imuscle, itest] * 100 / max_mvc
+                            )
+                        else:
+                            lists['mvc'].append(mat[dataset_name][iparticipant, imuscle, itest])
+
+        print(f'\ttotal participants: {count}')
         return lists
 
     def _to_array(self, mat):
