@@ -6,3 +6,7 @@
 mvc/__pycache__/
 
 *.h5
+
+*.pdf
+
+*.docx

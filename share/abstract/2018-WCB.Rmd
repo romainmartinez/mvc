@@ -1,37 +1,36 @@
 ---
-title: "Machine Learning Allows to Reduce the Amount of Maximum Voluntary Isometric Contractions Tests of the Shoulder Muscles from Sixteen to Three"
+title: "Machine Learning Reduce the Amount of Necessary Maximum Voluntary Isometric Contractions Tests of the Shoulder Muscles"
 subtitle: "2018 World Congress of Biomechanics, Dublin"
 output:
-  word_document: default
-  pdf_document: default
+  bookdown::word_document2:
+    reference_docx: template_TF.docx
 ---
 
-# Introduction (110 Words)
+# Introduction
 Raw electromyography (EMG) signals are commonly normalized using the maximum voluntary activation (MVA) to provide reliable information on muscle activation levels.
 MVA is produced during a maximum voluntary isometric contraction (MVIC) performed in a standardized position.
 There is no single MVIC test that produce MVA for all individuals in any given muscle.
 Consequently, previous studies have identified optimal combinations of MVIC tests that produce near-to-maximum EMG activation levels on the shoulder complex.
 However, these recommendations require to perform up to 12 MVIC tests to normalize 12 shoulder muscles.
-The objective of this study was to predict shoulder muscle MVA from a limited subset of MVIC tests, without compromising prediction accuracy.
+This study aims to predict shoulder muscle MVA from a limited subset of MVIC tests, without compromising prediction accuracy.
 
 # Methods
-The sample included 152 participants that volunteered to various shoulder EMG-based experiments. A diversity of 16 MVIC tests and 12 muscles were investigated.
+The sample included 152 participants that volunteered to various shoulder EMG-based experiments. A diversity of 16 MVIC tests and 12 muscles were recorded.
 The MVA of each participant and each muscle corresponded to the highest activation obtained across all tests.
 The dataset, composed of all activations for all muscles of all participants, was splitted into training (80%) and test (20%) sets using stratified sampling to keep the distribution of muscles consistent across sets.
-A random forest regressor was fitted using the training set to evaluate the importance of features (each MVIC test) on an artificial regression task.
-This allows to select a subset of the five best MVIC tests.
+A random forest regressor was fitted using the training set to evaluate the importance of features on an artificial regression task and select a subset of the five best MVIC tests.
 From this subset, an extra-trees regressor was fitted and optimized using a randomized search on hyper parameters.
-The final prediction was made using the test set. A non-parametric t-test, the root-mean-squared error (RMSE) and coefficient of determination (R2) between predicted value and real MVA was computed for each muscle.
+A non-parametric t-test, the root-mean-squared error (RMSE) and coefficient of determination (R2) between predicted value and real MVA was computed using the test set for each muscle.
 
 # Results
-The optimized extra-trees regressor predict values with a global RMSE and R2 equal to 0.43 and 0.95, respectively.
-For each muscle, the predicted MVA was not significantly different (p > 0.05) from the MVA produced by previously identified optimal combinations (Fig. 1).
+The optimized extra-trees regressor predicts values with a global RMSE and R2 equal to 0.04 and 0.95, respectively.
+For each muscle, the predicted MVA was not significantly different from the MVA produced by previously identified optimal combinations (Fig. 1).
 Seven out of the twelve recorded muscles obtained R2 superior to 0.9.
-The remaining four muscles stay above 0.8 excepted the pectoralis major, which is systematically underestimate (Fig. 1).
-The RMSE obtained range between *X* (lower trapezius) and *Y* (supraspinatus), excepted the pectoralis major which is again underestimate (Fig. 1).
+The remaining four muscles stay above 0.8, excepted the pectoralis major (Fig. 1).
+The latter is systematically underestimate which results in R2 and RMSE three and two standard deviation away from the mean, respectively.
+The RMSE of the other muscles range between 0.069 (lower trapezius) and 0.016 (supraspinatus).
 
 # Discussion
-
-# Acknowledgements
-
-# References
+Our results indicate that a total of five MVIC tests are required to normalize raw EMG signals of 12 shoulder muscles, while 12 tests were needed according to previous recommendations.
+Machine learning algorithms succeeded in reducing the number of MVIC tests but not at the expense of reliability since the predicted MVA were not significantly different from the MVA produced by previously identified optimal combinations.
+The combinations of tests along with the trained model used in this study could be used as guidelines to normalize shoulder muscles EMG signals.
