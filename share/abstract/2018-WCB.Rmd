@@ -1,9 +1,9 @@
 ---
-title: "Machine Learning Reduce the Amount of Maximum Voluntary Isometric Contractions Tests of the Shoulder Muscles Required"
+title: "Machine Learning Reduce the Amount of Necessary Maximum Voluntary Isometric Contractions Tests of the Shoulder Muscles"
 subtitle: "2018 World Congress of Biomechanics, Dublin"
 output:
-  word_document: default
-  pdf_document: default
+  bookdown::word_document2:
+    reference_docx: template_TF.docx
 ---
 
 # Introduction
