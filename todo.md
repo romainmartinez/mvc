@@ -18,3 +18,5 @@
 - metric == article Fabien
 
 - split w/ GroupKFold (le modele doit predire des participants jamais vu)
+
+- normaliser avec l'essai anatomique/relax
