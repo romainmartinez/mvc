@@ -10,12 +10,12 @@ output:
 Raw electromyography (EMG) signals are commonly normalized using the maximum voluntary activation (MVA) to provide reliable information on muscle activation levels.
 MVA is produced during a maximum voluntary isometric contraction (MVIC) performed in a standardized position.
 There is no single MVIC test that produce MVA for all individuals in any given muscle.
-Consequently, previous studies have identified optimal combinations of MVIC tests that produce near-to-maximum EMG activation levels on the shoulder complex [1].
+Consequently, previous studies have identified optimal combinations of MVIC tests that produce near-to-maximum EMG activation levels on the shoulder complex [@dalmaso_optimal_2016].
 However, these recommendations require to perform up to 12 MVIC tests to normalize 12 shoulder muscles.
 This study aims to predict shoulder muscle MVA from a limited subset of MVIC tests, without compromising prediction accuracy.
 
 # Methods
-The sample included 152 participants that volunteered to nine shoulder EMG-based experiments. A diversity of 16 MVIC tests and 12 muscles were recorded.
+The sample included 152 participants that volunteered to nine shoulder EMG-based experiments. A diversity of 16 MVIC tests and 11 muscles were recorded.
 The MVA of each participant and each muscle corresponded to the highest activation obtained across all tests.
 The dataset, composed of all activations for all muscles of all participants, was splitted into training (80%) and test (20%) sets using stratified sampling to keep the distribution of muscles consistent across sets.
 A random forest regressor was fitted using the training set to evaluate the importance of features on an artificial regression task and select a subset of the best MVIC tests.
@@ -23,7 +23,7 @@ From this subset, an extra-trees regressor was fitted and optimized using a rand
 A non-parametric t-test, the root-mean-squared error (RMSE) and coefficient of determination (R2) between predicted value and real MVA was computed using the test set for each muscle.
 
 # Results
-Five MVIC tests were retained. The optimized extra-trees regressor predicts values with a global RMSE and R2 equal to 0.04 and 0.95, respectively.
+Five MVIC tests were retained. The optimized extra-trees regressor predicts values with a global RMSE and R2 equal to 10% and 0.95, respectively.
 For each muscle, the predicted MVA was not significantly different from the MVA produced by previously identified optimal combinations (p>0.05).
 All muscles but the pectoralis major had R2 superior to 0.8, including seven superior to 0.9.
 
