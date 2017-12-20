@@ -24,7 +24,7 @@ A non-parametric t-test, the root-mean-squared error (RMSE) and coefficient of d
 
 # Results
 Five MVIC tests were retained. The optimized extra-trees regressor predicts values with a global RMSE and R2 equal to 0.04 and 0.95, respectively.
-For each muscle, the predicted MVA was not significantly different from the MVA produced by previously identified optimal combinations (Fig. 1).
+For each muscle, the predicted MVA was not significantly different from the MVA produced by previously identified optimal combinations (p>0.05).
 All muscles but the pectoralis major had R2 superior to 0.8, including seven superior to 0.9.
 
 *The RMSE of the other muscles range between 0.069 (lower trapezius) and 0.016 (supraspinatus).*
