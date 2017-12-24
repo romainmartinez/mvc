@@ -19,7 +19,7 @@ This study aims to predict shoulder muscle MVA from a limited subset of MVIC tes
 The sample included 152 participants. A diversity of 16 MVIC tests and 12 muscles were recorded.
 The MVA of each participant and each muscle corresponded to the highest activation produced by previously identified optimal combinations.
 The dataset, composed of all activations for all muscles of all participants, was splitted into training (80%) and test (20%) sets.
-A random forest regressor was fitted using the training set to evaluate the importance of features and select a subset of the best MVIC tests.
+A random forest regressor was fitted using the training set to evaluate features importance and select a subset of the best MVIC tests.
 From this subset, an extra-trees regressor was fitted and optimized using a randomized search on hyper parameters.
 A non-parametric t-test, coefficient of determination (R2) and root-mean-squared (RMSE) error between predicted value and MVA was computed for each muscle.
 
