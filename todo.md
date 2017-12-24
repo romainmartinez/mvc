@@ -20,3 +20,19 @@
 - split w/ GroupKFold (le modele doit predire des participants jamais vu)
 
 - normaliser avec l'essai anatomique/relax
+
+# Pipeline
+- replace missing values
+- add feature (polynomial features)
+- feature selection
+- normalization on best test
+- remove outlier
+- split data
+- test models
+- HP optimization
+- prediction
+
+- RMSE percentage
+- t-test
+- r2
+- stacked histogramm
