@@ -1,8 +1,0 @@
-numpy
-seaborn
-scipy
-pandas
-matplotlib
-tables
-sklearn
-xgboost
