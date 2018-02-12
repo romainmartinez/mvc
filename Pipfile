@@ -15,6 +15,7 @@ matplotlib = "*"
 sklearn = "*"
 xgboost = "*"
 plotly = "*"
+yapf = "*"
 
 
 [dev-packages]
