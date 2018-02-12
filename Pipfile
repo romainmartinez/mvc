@@ -9,13 +9,12 @@ name = "pypi"
 
 ipykernel = "*"
 numpy = "*"
-seaborn = "*"
 scipy = "*"
 pandas = "*"
 matplotlib = "*"
-tables = "*"
 sklearn = "*"
 xgboost = "*"
+plotly = "*"
 
 
 [dev-packages]
