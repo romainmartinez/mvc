@@ -12,10 +12,10 @@ numpy = "*"
 scipy = "*"
 pandas = "*"
 matplotlib = "*"
-sklearn = "*"
 xgboost = "*"
 plotly = "*"
 yapf = "*"
+sklearn = "*"
 
 
 [dev-packages]
