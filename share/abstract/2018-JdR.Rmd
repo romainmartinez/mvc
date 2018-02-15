@@ -1,0 +1,41 @@
+---
+title: "Réduction du nombre de tests isométriques nécessaires pour la normalisation de signaux électromyographique à l'aide de l'apprentissage automatique"
+subtitle: "2018 World Congress of Biomechanics, Dublin"
+output:
+  bookdown::word_document2:
+    reference_docx: template_TF.docx
+  bookdown::pdf_document2: default
+---
+
+# Introduction
+La normalisation de signaux électromyographiques (EMG) est réalisée avec une contraction volontaire maximale (CVM), afin d’estimer le niveau d’activation musculaire avec précision.
+CVM est fréquemment obtenue lors d’un test de contraction volontaire maximale isométrique (CVMI) exécuté dans une position standard.
+Il n’existe cependant aucun test CVMI qui permet de produire une CVM pour un ensemble de muscle.
+Pour cette raison, des études précédentes ont proposé des combinaisons de tests CVMI produisant une activation EMG quasi maximale sur le complexe de l’épaule [1].
+Ces combinaisons requièrent jusqu’à 12 tests CVMI pour normaliser 12 muscles de l’épaule.
+L’objectif de cette étude est de prédire CVM pour un ensemble de muscles de l’épaule à partir d’un ensemble limité de tests CVMI, sans compromettre la précision de la prédiction.  
+
+# Methods
+A random forest regressor was fitted using the training set to evaluate features importance and select a subset of the best MVIC tests.
+From this subset, an extra-trees regressor was fitted and optimized using a randomized search on hyper parameters.
+A non-parametric t-test, coefficient of determination (R2) and root-mean-squared (RMSE) error between predicted value and MVA was computed for each muscle.
+
+# Méthode
+Un ensemble de 16 tests CVMI sur 12 muscles de l'épaule a été enregistré sur 152 participants.
+La CVM de chaque participant pour chaque muscle correspond à la plus haute activation produite par une combinaison de test proposée par la littérature [1].
+
+# Results
+Five MVIC tests were retained. The optimized extra-trees regressor predicts values with a global RMSE and R2 equal to 0.044 mV and 0.95, respectively.
+For each muscle, the predicted MVA was not significantly different from the MVA produced by previously identified optimal combinations (Fig. 1).
+All muscles but the pectoralis major had R2 superior to 0.8, including seven superior to 0.9.
+
+Fig. 1: Scatter plot of the predicted MVA (mV) against the real MVA for each muscle. RMSE, R2 and p-value are displayed on the upper left of each subplot.
+
+# Discussion
+Our preliminary results indicate that a total of five MVIC tests are required to normalize raw EMG signals of 12 shoulder muscles, while 12 tests were needed according to previous recommendations [1].
+Machine learning algorithms succeeded in reducing the number of MVIC tests but not at the expense of reliability since the predicted MVA were not significantly different from the MVA produced by previously identified optimal combinations.
+The next steps of this study will involve carrying features normalization to provide a relative error and a prediction independent of the EMG system.
+The combinations of tests along with the trained model used in this study could be used as guidelines to normalize shoulder muscles EMG signals.
+
+# Reference
+1. Dal Maso, F., (2016). Arch Phys Med Rehabil (9): 1542–1551.
