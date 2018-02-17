@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a4f91cafa0a115370662ebc30efd379eb285c444cc1ed951c307287362ff1424"
+            "sha256": "150d4dffa233fbb746c44cdbe8cfad9f21b655fd2b1236161ae6162f391f23fd"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -47,6 +47,12 @@
                 "sha256:cd7b2d1018258d7247a71425e9f26463dfb444d411c39569972f4ce586b0c9d8"
             ],
             "version": "==0.10.0"
+        },
+        "deap": {
+            "hashes": [
+                "sha256:95c63e66d755ec206c80fdb2908851c0bef420ee8651ad7be4f0578e9e909bcf"
+            ],
+            "version": "==1.2.2"
         },
         "decorator": {
             "hashes": [
@@ -387,6 +393,12 @@
             ],
             "version": "==0.0"
         },
+        "stopit": {
+            "hashes": [
+                "sha256:f7f39c583fd92027bd9d06127b259aee7a5b7945c1f1fa56263811e1e766996d"
+            ],
+            "version": "==1.1.2"
+        },
         "tornado": {
             "hashes": [
                 "sha256:92b7ca81e18ba9ec3031a7ee73d4577ac21d41a0c9b775a9182f43301c3b5f8e",
@@ -397,12 +409,32 @@
             ],
             "version": "==4.5.3"
         },
+        "tpot": {
+            "hashes": [
+                "sha256:0d1340c73367153d6b8c690c4e66be7c45066e5fe41dbb030a4a62a335565497"
+            ],
+            "version": "==0.9.2"
+        },
+        "tqdm": {
+            "hashes": [
+                "sha256:4c041f8019f7be65b8028ddde9a836f7ccc51c4637f1ff2ba9b5813d38d19d5a",
+                "sha256:df32e6f127dc0ccbc675eadb33f749abbcb8f174c5cb9ec49c0cdb73aa737377"
+            ],
+            "version": "==4.19.5"
+        },
         "traitlets": {
             "hashes": [
                 "sha256:c6cb5e6f57c5a9bdaa40fa71ce7b4af30298fbab9ece9815b5d995ab6217c7d9",
                 "sha256:9c4bd2d267b7153df9152698efb1050a5d84982d3384a37b2c1f7723ba3e7835"
             ],
             "version": "==4.3.2"
+        },
+        "update-checker": {
+            "hashes": [
+                "sha256:59cfad7f9a0ee99f95f1dfc60f55bf184937bcab46a7270341c2c33695572453",
+                "sha256:70e39446fccf77b21192cf7a8214051fa93a636dc3b5c8b602b589d100a168b8"
+            ],
+            "version": "==0.16"
         },
         "urllib3": {
             "hashes": [

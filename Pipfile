@@ -16,6 +16,7 @@ xgboost = "*"
 plotly = "*"
 yapf = "*"
 sklearn = "*"
+TPOT = "*"
 
 
 [dev-packages]
