@@ -10,3 +10,5 @@ mvc/__pycache__/
 *.pdf
 
 *.docx
+
+Pipfile\.lock
