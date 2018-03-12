@@ -19,6 +19,7 @@ sklearn = "*"
 tpot = "*"
 "spm1d" = "*"
 xcessiv = "*"
+feather-format = "*"
 
 
 [dev-packages]
