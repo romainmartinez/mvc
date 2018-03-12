@@ -18,6 +18,7 @@ yapf = "*"
 sklearn = "*"
 tpot = "*"
 "spm1d" = "*"
+xcessiv = "*"
 
 
 [dev-packages]
