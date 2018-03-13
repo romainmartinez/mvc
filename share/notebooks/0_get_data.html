@@ -15020,6 +15020,7 @@ $( document ).ready(function(){
 <span class="kn">import</span> <span class="nn">scipy.io</span> <span class="k">as</span> <span class="nn">sio</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
 <span class="c1"># Path</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
@@ -15053,10 +15054,7 @@ $( document ).ready(function(){
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">data_format</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">data_path</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;please provide a valid data path&#39;</span><span class="p">)</span>
-        
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">load_data</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">data_format</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">mat</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;datasets&#39;</span><span class="p">,</span> <span class="s1">&#39;participants&#39;</span><span class="p">,</span> <span class="s1">&#39;muscles&#39;</span><span class="p">,</span> <span class="s1">&#39;tests&#39;</span><span class="p">,</span> <span class="s1">&#39;mvc&#39;</span><span class="p">)}</span>
     <span class="n">count</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
@@ -15071,7 +15069,7 @@ $( document ).ready(function(){
             
             <span class="n">mat</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span> <span class="o">=</span> <span class="n">sio</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="n">ifile</span><span class="p">)[</span><span class="s1">&#39;MVE&#39;</span><span class="p">]</span>
             <span class="n">n_participants</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;project &#39;</span><span class="si">{dataset}</span><span class="s2">&#39; (</span><span class="si">{n_participants}</span><span class="s2"> participants)&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;project &#39;</span><span class="si">{dataset}</span><span class="s2">&#39; (</span><span class="si">{n_participants}</span><span class="s2"> participants)&quot;</span><span class="p">)</span>
             
             <span class="k">for</span> <span class="n">iparticipant</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mat</span><span class="p">[</span><span class="n">dataset</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
                 <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -15087,7 +15085,7 @@ $( document ).ready(function(){
                         <span class="k">else</span><span class="p">:</span>
                             <span class="n">data</span><span class="p">[</span><span class="s1">&#39;mvc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mat</span><span class="p">[</span><span class="n">dataset</span><span class="p">][</span><span class="n">iparticipant</span><span class="p">,</span> <span class="n">imuscle</span><span class="p">,</span> <span class="n">itest</span><span class="p">])</span>
                             
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="se">\n\t</span><span class="s1">total participants: </span><span class="si">{count}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;</span><span class="se">\n\t</span><span class="s1">total participants: </span><span class="si">{count}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">data</span><span class="p">,</span> <span class="n">dataset_names</span>
 </pre></div>
 
@@ -15102,15 +15100,13 @@ $( document ).ready(function(){
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">DATA_FORMAT</span> <span class="o">=</span> <span class="s1">&#39;only_max&#39;</span>
-<span class="n">data</span><span class="p">,</span> <span class="n">DATASET_NAMES</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="n">DATA_PATH</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="n">DATA_FORMAT</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">MUSCLES_NAMES</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;upper trapezius&#39;</span><span class="p">,</span> <span class="s1">&#39;middle trapezius&#39;</span><span class="p">,</span> <span class="s1">&#39;lower trapezius&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;anterior deltoid&#39;</span><span class="p">,</span> <span class="s1">&#39;middle deltoid&#39;</span><span class="p">,</span> <span class="s1">&#39;posterior deltoid&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;pectoralis major&#39;</span><span class="p">,</span> <span class="s1">&#39;serratus anterior&#39;</span><span class="p">,</span> <span class="s1">&#39;latissimus dorsi&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;supraspinatus&#39;</span><span class="p">,</span> <span class="s1">&#39;infraspinatus&#39;</span><span class="p">,</span> <span class="s1">&#39;subscapularis&#39;</span>
-<span class="p">]</span>
-<span class="n">TEST_NAMES</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">data</span><span class="p">,</span> <span class="n">DATASET_NAMES</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span>
+    <span class="n">data_path</span><span class="o">=</span><span class="n">DATA_PATH</span><span class="p">,</span>
+    <span class="n">data_format</span><span class="o">=</span><span class="n">DATA_FORMAT</span><span class="p">,</span>
+    <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">normalized</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">load_data</span><span class="p">(</span>
+    <span class="n">data_path</span><span class="o">=</span><span class="n">DATA_PATH</span><span class="p">,</span> <span class="n">data_format</span><span class="o">=</span><span class="n">DATA_FORMAT</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15150,7 +15146,7 @@ project &#39;Sylvain_2015&#39; (10 participants)
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/romain/.local/share/virtualenvs/mvc-kMH3Oq29/lib/python3.6/site-packages/ipykernel_launcher.py:24: RuntimeWarning: All-NaN slice encountered
+<pre>/home/romain/.local/share/virtualenvs/mvc-kMH3Oq29/lib/python3.6/site-packages/ipykernel_launcher.py:21: RuntimeWarning: All-NaN slice encountered
 </pre>
 </div>
 </div>
@@ -15292,6 +15288,126 @@ project &#39;Sylvain_2015&#39; (10 participants)
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_tidy_normalized</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;participant&#39;</span><span class="p">:</span> <span class="n">normalized</span><span class="p">[</span><span class="s1">&#39;participants&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;dataset&#39;</span><span class="p">:</span> <span class="n">normalized</span><span class="p">[</span><span class="s1">&#39;datasets&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;muscle&#39;</span><span class="p">:</span> <span class="n">normalized</span><span class="p">[</span><span class="s1">&#39;muscles&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;test&#39;</span><span class="p">:</span> <span class="n">normalized</span><span class="p">[</span><span class="s1">&#39;tests&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;mvc&#39;</span><span class="p">:</span> <span class="n">normalized</span><span class="p">[</span><span class="s1">&#39;mvc&#39;</span><span class="p">]</span>
+<span class="p">})</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;dataset shape = </span><span class="si">{df_tidy.shape}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">df_tidy_normalized</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>dataset shape = (18465, 5)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dataset</th>
+      <th>muscle</th>
+      <th>mvc</th>
+      <th>participant</th>
+      <th>test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>78.803940</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>76.603025</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>90.580569</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>25.635654</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>0</td>
+      <td>0</td>
+      <td>100.000000</td>
+      <td>0</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_wide</span> <span class="o">=</span> <span class="n">df_tidy</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;dataset&#39;</span><span class="p">,</span> <span class="s1">&#39;participant&#39;</span><span class="p">,</span> <span class="s1">&#39;muscle&#39;</span><span class="p">],</span>
     <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;test&#39;</span><span class="p">,</span>
@@ -15326,7 +15442,7 @@ project &#39;Sylvain_2015&#39; (10 participants)
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[5]:</div>
+<div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -15490,11 +15606,37 @@ project &#39;Sylvain_2015&#39; (10 participants)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_tidy</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">/</span> <span class="s1">&#39;df_tidy&#39;</span><span class="p">)</span>
+<span class="n">df_tidy_normalized</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">/</span> <span class="s1">&#39;df_tidy_normalized&#39;</span><span class="p">)</span>
 <span class="n">df_wide</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">to_feather</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">/</span> <span class="s1">&#39;df_wide&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">conf</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;DATASETS&#39;</span><span class="p">:</span> <span class="n">DATASET_NAMES</span><span class="p">,</span>
+    <span class="s1">&#39;MUSCLES&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s1">&#39;upper trapezius&#39;</span><span class="p">,</span> <span class="s1">&#39;middle trapezius&#39;</span><span class="p">,</span> <span class="s1">&#39;lower trapezius&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;anterior deltoid&#39;</span><span class="p">,</span> <span class="s1">&#39;middle deltoid&#39;</span><span class="p">,</span> <span class="s1">&#39;posterior deltoid&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;pectoralis major&#39;</span><span class="p">,</span> <span class="s1">&#39;serratus anterior&#39;</span><span class="p">,</span> <span class="s1">&#39;latissimus dorsi&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;supraspinatus&#39;</span><span class="p">,</span> <span class="s1">&#39;infraspinatus&#39;</span><span class="p">,</span> <span class="s1">&#39;subscapularis&#39;</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;TESTS&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">DATA_PATH</span> <span class="o">/</span> <span class="s1">&#39;conf.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">w</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">conf</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 
 </div>
