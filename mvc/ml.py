@@ -4,7 +4,7 @@ import numpy as np
 def get_X_and_y(d, test_col_str, other_col_to_keep, remove_nans=False):
     y = np.nanmax(d[test_col_str], axis=1)
 
-    col_names = other_col_to_keep.tolist() + test_col_str.tolist()
+    col_names = other_col_to_keep + test_col_str
     X = d[col_names].values
 
     nan_row_idx = np.isnan(X).any(axis=1)
@@ -40,7 +40,7 @@ class Normalize:
                 y_out = np.apply_along_axis(normalize, 0, y, self.ref_vector)
         return X_out, y_out
 
-    def inverse_transform(self, X, y):
+    def inverse_transform(self, X=np.array([]), y=np.array([])):
         denormalize = lambda a, b: a / 100 * b
         X_out, y_out = [], []
         if X.any():

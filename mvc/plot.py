@@ -3,7 +3,7 @@ import plotly.figure_factory as ff
 import plotly.graph_objs as go
 import plotly.tools as tools
 
-BASE_LAYOUT = go.Layout(hovermode='closest', font=dict(size=14))
+BASE_LAYOUT = go.Layout(hovermode='closest', font=dict(size=14), width=1096, height=822)
 MARKER_LAYOUT = dict(
     color='rgba(27, 158, 119, 0.6)',
     line=dict(
@@ -297,5 +297,34 @@ def bar_metrics(d, **kwargs):
 def regression_report(d):
     table = ff.create_table(d, index=[d.index])
 
-    table['layout'].update(font=dict(size=14))
+    table['layout'].update(BASE_LAYOUT)
     return table
+
+
+def compare_methods(stats,
+                    descriptions,
+                    included_muscle=np.arange(13),
+                    included_methods=np.arange(4),
+                    **kwargs):
+    colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728']
+    methods = np.intersect1d(np.unique(stats['method']), included_methods)
+    muscles_id = np.array(descriptions['muscle'])
+    traces = []
+    for imethod in methods:
+        current = np.logical_and(stats['method'] == imethod,
+                                 np.in1d(stats['muscle'], included_muscle))
+        traces.append(
+            go.Box(
+                y=stats['y'][current],
+                x=muscles_id[stats['muscle'][current]],
+                boxpoints=False,
+                marker=dict(color=colors[imethod]),
+                name=descriptions['method'][imethod]))
+
+    layout = BASE_LAYOUT.copy()
+    layout.update(
+        dict(
+            title=kwargs.get('title'),
+            boxmode='group',
+            yaxis=dict(title=kwargs.get('ytitle'))))
+    return dict(data=traces, layout=layout)
