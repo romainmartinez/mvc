@@ -13,10 +13,10 @@ This repository contains code for the paper _Machine learning reduces the amount
 - complete comparison summary
 
 # Notebooks
-1. [Get data](http://htmlpreview.github.io/?https://github.com/romainmartinez/mvc/blob/master/share/notebooks/0_get_data.html)
-2. [Explore data](http://htmlpreview.github.io/?https://github.com/romainmartinez/mvc/blob/master/share/notebooks/1_explore_data.html)
-3. [Machine learning pipeline](http://htmlpreview.github.io/?https://github.com/romainmartinez/mvc/blob/master/share/notebooks/2_ml_pipeline.html)
-4. [Comparison with other studies](http://htmlpreview.github.io/?https://github.com/romainmartinez/mvc/blob/master/share/notebooks/3_comparison.html)
+1. [Get data](https://htmlpreview.github.io/?https://github.com/romainmartinez/mvc/blob/master/share/notebooks/0_get_data.html)
+2. [Explore data](https://htmlpreview.github.io/?https://github.com/romainmartinez/mvc/blob/master/share/notebooks/1_explore_data.html)
+3. [Machine learning pipeline](https://htmlpreview.github.io/?https://github.com/romainmartinez/mvc/blob/master/share/notebooks/2_ml_pipeline.html)
+4. [Comparison with other studies](https://htmlpreview.github.io/?https://github.com/romainmartinez/mvc/blob/master/share/notebooks/3_comparison.html)
 
 # Paper overview
 Idea: _blabla_
