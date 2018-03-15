@@ -12,5 +12,3 @@ mvc/__pycache__/
 *.docx
 
 Pipfile\.lock
-
-*.pkl
