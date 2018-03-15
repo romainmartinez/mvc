@@ -16,6 +16,7 @@ sklearn = "*"
 "spm1d" = "*"
 feather-format = "*"
 dill = "*"
+matplotlib = "*"
 
 
 [dev-packages]
