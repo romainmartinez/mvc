@@ -11,16 +11,13 @@ ipykernel = "*"
 numpy = "*"
 scipy = "*"
 pandas = "*"
-matplotlib = "*"
-xgboost = "*"
 plotly = "*"
-yapf = "*"
 sklearn = "*"
-tpot = "*"
 "spm1d" = "*"
-xcessiv = "*"
 feather-format = "*"
+dill = "*"
 
 
 [dev-packages]
 
+yapf = "*"
