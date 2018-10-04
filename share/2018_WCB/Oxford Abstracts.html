@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!-- saved from url=(0148)https://app.oxfordabstracts.com/stages/123/programme-builder/submission/23168?backHref=/events/123/programme-builder/view/sort/author&view=published -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="./Oxford Abstracts_files/tachyons-font-family.min.css">
+  <link rel="stylesheet" href="./Oxford Abstracts_files/fontello.css">
+  <link rel="stylesheet" href="./Oxford Abstracts_files/toBeRefactored.css">
+  <link rel="stylesheet" href="./Oxford Abstracts_files/main.css">
+
+  <!-- froala -->
+  <link rel="stylesheet" href="./Oxford Abstracts_files/font-awesome.min.css">
+  <link rel="stylesheet" href="./Oxford Abstracts_files/froala_editor.pkgd.min.css">
+  <link rel="stylesheet" href="./Oxford Abstracts_files/froala_style.min.css">
+
+  
+  <script type="text/javascript" async="" src="./Oxford Abstracts_files/analytics.js"></script><script async="" src="./Oxford Abstracts_files/js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-108030784-1');
+  </script>
+  <script src="./Oxford Abstracts_files/polyfills.js"></script>
+
+  <title> Oxford Abstracts </title>
+
+  <link rel="stylesheet" type="text/css" href="./Oxford Abstracts_files/light-bottom.css"></head><body class="sans-serif"><div class="cc_banner-wrapper "><div class="cc_banner cc_container cc_container--open"><a href="https://app.oxfordabstracts.com/stages/123/programme-builder/submission/23168?backHref=/events/123/programme-builder/view/sort/author&amp;view=published#null" data-cc-event="click:dismiss" target="_blank" class="cc_btn cc_btn_accept_all">Got it!</a><p class="cc_message">This website uses cookies to ensure you get the best experience on our website </p><a class="cc_logo" target="_blank" href="http://silktide.com/cookieconsent">Cookie Consent plugin for the EU cookie law</a></div></div><span id="oxabsStateElement" hidden="">%7B%7D</span>
+  <script>
+      window.oxabsStateIsUriEncoded = true
+      window.maxUploadBytesSize = 10485760
+  </script>
+  <!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+  <script type="text/javascript">
+    window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"Got it!","learnMore":"More info","link":null,"theme":"light-bottom"};
+  </script>
+
+  <script type="text/javascript" src="./Oxford Abstracts_files/cookieconsent.min.js"></script>
+  <!-- End Cookie Consent plugin -->
+
+
+
+<nav class="nav nav--ghost">
+  <div class="nav__inner">
+    <a class="nav__link button nav__link--colour" href="https://app.oxfordabstracts.com/events/123/programme-builder/view/sort/author?view=published"> Back </a>
+  </div>
+</nav>
+<div class="banner">
+    <img class="banner__image" src="./Oxford Abstracts_files/event_id=123">
+  <h1 class="banner__title banner__title--no-cover">8th World Congress of Biomechanics</h1>
+</div>
+
+
+<div class="card">
+  <div class="card__section">
+    <div class="card__sub-section card__sub-section--divided">
+      <span>O0741</span>
+      <span class="card__subtitle">Machine learning reduces the amount of necessary maximum voluntary isometric contractions tests of the shoulder muscles</span>
+
+      <div>
+            <span style="text-decoration:underline">Romain Martinez</span><sup>1</sup>, 
+            Mickael Begon<sup>1</sup>, 
+            Fabien Dal Maso<sup>2</sup>, 
+            Patrick Marion<sup>1</sup>
+      </div>
+      <div>
+        <sup>1</sup>Université de Montréal, Montréal, Canada. <sup>2</sup>McGill University, Montréal, Canada
+      </div><br>
+      <div>
+              <div class="card__subtitle"><b>Abstract</b></div>
+              <div><h1>Introduction</h1>
+      Raw electromyography (EMG) signals are commonly normalized using the maximum voluntary activation (MVA) to provide reliable information on muscle activation levels. MVA is produced during a maximum voluntary isometric contraction (MVIC) performed in a standardized position. There is no single MVIC test that produce MVA for all individuals in any given muscle. Consequently, previous studies have identified optimal combinations of MVIC tests that produce near-to-maximum EMG activation levels on the shoulder complex [1]. However, these recommendations require to perform up to 12 MVIC tests to normalize 12 shoulder muscles. This study aims to predict shoulder muscle MVA from a limited subset of MVIC tests, without compromising prediction accuracy. <br>
+      <h1>Methods</h1>
+      <p>The sample included 152 participants. A diversity of 16 MVIC tests and 12 muscles were recorded. The MVA of each participant and each muscle corresponded to the highest activation produced by previously identified optimal combinations. The dataset, composed of all activations for all muscles of all participants, was splitted into training (80%) and test (20%) sets. A random forest regressor was fitted using the training set to evaluate the features importance and select a subset of the best MVIC tests. From this subset, an extra-trees regressor was fitted and optimized using a randomized search on hyper parameters. A non-parametric t-test, coefficient of determination (R<sup>2</sup>) and root-mean-squared (RMSE) error between predicted value and MVA was computed for each muscle.</p>
+      <h1>Results</h1>
+      <p>Five MVIC tests were retained. The optimized extra-trees regressor predicts values with a global RMSE and R<sup>2</sup> equal to 0.044&nbsp;mV and 0.95, respectively. For each muscle, the predicted MVA was not significantly different from the MVA produced by previously identified optimal combinations (Fig.&nbsp;1). All muscles but the pectoralis major had R<sup>2</sup> superior to 0.8, including seven superior to 0.9.</p>
+      <p><img src="./Oxford Abstracts_files/stage_id=123-checksum=418f6b4b2176564f5b1481c9a83ee8395a44128f"><br>Fig. 1: Scatter plot of the predicted MVA (mV) against the real MVA for each muscle. RMSE, R<sup>2</sup> and p-value are displayed on the upper left of each subplot.</p>
+      <h1>Discussion</h1>
+      <p>Our preliminary results indicate that a total of five MVIC tests are required to normalize raw EMG signals of 12 shoulder muscles, while 12 tests were needed according to previous recommendations [1]. Machine learning algorithms succeeded in reducing the number of MVIC tests but not at the expense of reliability since the predicted MVA were not significantly different from the MVA produced by previously identified optimal combinations. The next steps of this study will involve carrying features normalization to provide a relative error and a prediction independent of the EMG system. The combinations of tests along with the trained model used in this study could be used as guidelines to normalize shoulder muscles EMG signals.</p>
+      <h1>Reference</h1>
+      <ol>
+      <li>Dal Maso, F., (2016). Arch Phys Med Rehabil (9): 1542–1551.</li>
+      </ol></div><br>
+        <br>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div id="snackbar" class="snackbar snackbar--success"></div>
+
+  <a class="footer__title" target="_blank" href="http://oxfordabstracts.com/">oxford abstracts</a>
+  <nav class="footer__links">
+      <a class="footer__link" target="_blank" href="https://oxfordabstracts.freshdesk.com/support/solutions/8000048486">Help</a>
+      <a class="footer__link" target="_blank" href="http://oxfordabstracts.com/about/">About Us</a>
+      <a class="footer__link" target="_blank" href="mailto:support@oxfordabstracts.com?Subject=Hello">Contact</a>
+  </nav>
+
+</footer>
+
+<script src="./Oxford Abstracts_files/classList.min.js"></script>
+<script src="./Oxford Abstracts_files/bundle.js"></script>
+<script defer="">document.addEventListener("DOMContentLoaded", function () {
+  oxabsPageControllers.default();
+});</script>
+
+
+
+
+</body></html>
