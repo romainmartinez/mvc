@@ -1,0 +1,15 @@
+# create a conda environment with: `conda env create`
+name: mvc
+channels:
+- defaults
+- conda-forge
+dependencies:
+- python
+- nb_conda_kernels
+- numpy
+- scipy
+- pandas
+- scikit-learn
+- xgboost
+- scikit-optimize
+- altair
