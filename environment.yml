@@ -10,6 +10,8 @@ dependencies:
 - scipy
 - pandas
 - scikit-learn
-- xgboost
+- catboost
 - scikit-optimize
 - altair
+- pymc3
+- mkl-service
