@@ -1,8 +1,8 @@
 # create a conda environment with: `conda env create`
 name: mvc
 channels:
-- defaults
 - conda-forge
+- defaults
 dependencies:
 - python
 - nb_conda_kernels
@@ -14,4 +14,3 @@ dependencies:
 - scikit-optimize
 - altair
 - pymc3
-- mkl-service
