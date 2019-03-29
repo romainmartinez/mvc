@@ -7,10 +7,10 @@ dependencies:
 - python
 - nb_conda_kernels
 - numpy
-- scipy
+#- scipy
 - pandas
 - scikit-learn
 - catboost
-- scikit-optimize
+#- scikit-optimize
 - altair
 - pymc3
